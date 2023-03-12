@@ -1,0 +1,137 @@
+.contacto {
+    margin: 3rem 1rem 2rem;
+    padding: 2rem 0 1rem;
+}
+
+.contacto__contenedor {
+    background-color: #eaf2fdf1;
+    box-shadow: 0 5px 10px black;
+    max-width: 992px;
+    margin: 0 auto;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+
+.contacto__fuente {
+    width: 45%;
+    display: flex;
+}
+
+.contacto__img {
+    width: 100%;
+    height: 100%;
+}
+
+.contacto__form {
+    width: 51%;
+    margin: 2rem 2rem 2rem 0;
+}
+
+.contacto__titulo {
+    color: #464646;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contacto__descripcion {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #464646;
+    margin-bottom: 1rem;
+}
+
+.form {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form__input {
+    height: 3rem;
+    padding: 0 1rem;
+    border: none;
+}
+
+.form__input:focus {
+    outline: none;
+    border-bottom: 2px solid blue;
+}
+
+.form__mensaje {
+    background-color: none;
+    border: none;
+    resize: none;
+    padding: 1rem;
+    
+}
+
+.form__mensaje:focus {
+    outline: none;
+    border-bottom: 2px solid blue;
+}
+
+.form__btn {
+    width: 180px;
+    height: 50px;
+    background-color: #5b4b4bee;
+    color: #9feedd;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all 400ms ease;
+
+}
+.form__btn:hover {
+    background-color: #5b4b4bdf;
+    color: #9feedd;
+    box-shadow:0 0 0.2rem #5b4b4b;
+    translate: 0 2px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .contacto {
+        margin: 0;
+        padding: 0;
+    }
+
+    .contacto__contenedor {
+        border-radius: 0;
+    }
+
+    .contacto__fuente {
+        display: none;
+    }
+
+    .contacto__form {
+        width: 100%;
+        margin: 2rem;
+    }
+
+    .contacto__titulo {
+        font-size: 1.375rem;
+        margin-bottom: 0.5rem;
+    }
+    .contacto__descripcion {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .form {
+        margin-top: 1.5rem;
+    }
+
+    .form__btn {
+        width: 200px;
+    }
+    .form__btn:hover {
+        translate: 0;
+    }
+}
