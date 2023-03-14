@@ -28,8 +28,8 @@
 
 @media screen and (max-width: 768px) {
     .persona {
-        padding: 0;
-        margin: 2rem;
+        padding: 2rem 0;
+        margin: 0;
     }
     .contenedor__persona {
         width: auto;

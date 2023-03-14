@@ -8,8 +8,6 @@
     box-shadow: 0 5px 10px black;
     max-width: 992px;
     margin: 0 auto;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
     display: flex;
     gap: 1rem;
     justify-content: space-between;

@@ -85,7 +85,7 @@
 
 @media screen and (max-width: 768px) {
     .formacion {
-        padding: 1rem;
+        padding: 2rem 1rem;
     }
     .formacion__contenedor {
         padding: 0;
