@@ -174,3 +174,27 @@
     }
     
 }
+
+@media screen and (max-width: 576px) {
+    .experiencia__contenedor {
+        padding: 1rem;
+    }
+    .experiencia__botones {
+        gap: 0.2rem;
+    }
+    .experiencia__imagen {
+        height: 200px;
+    }
+
+    .experiencia__fuente:hover {
+        transform: translateY(calc(-100% + 200px));
+    }
+
+    .experiencia__botones span {
+        width: 250px;
+        margin: 0 auto;
+    }
+    .experiencia__btn {
+        width: 100%;
+    }
+}

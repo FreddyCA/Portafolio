@@ -133,3 +133,12 @@
         translate: 0;
     }
 }
+
+@media screen and (max-width: 576px) {
+    .contacto__descripcion {
+        font-size: 1rem;
+    }
+    .form__btn {
+        width: 100%;
+    }
+}

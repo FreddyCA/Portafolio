@@ -33,3 +33,13 @@ footer {
 .footer__img:hover {
   background-color: #d8dfe8;
 }
+
+@media screen and (max-width: 576px) {
+  footer {
+    height: 120px;
+  }
+  .footer__nombre {
+    font-size: 0.8rem;
+  }
+  
+}

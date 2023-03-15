@@ -14,14 +14,16 @@
 }
 
 
-.menu__btn {
+button {
     display: none;
+    /* visibility: hidden; */
 }
 
 .muenu__lista {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    visibility: visible;
 }
 
 .menu__item {
@@ -59,7 +61,6 @@
 
 
 
-
 @media screen and (max-width: 1024px) {
 
     .cabecera {
@@ -76,13 +77,15 @@
     
     .muenu__lista {
         position: absolute;
+        z-index: 20;
         top: 5rem;
         right: 0;
         height: fit-content;
         width: 18rem;
         flex-direction: column;
         gap: 0;
-        display: none;
+        /* display: none; */
+        visibility: hidden;
         perspective: 300px;
     }
     .menu__contacto:hover {
@@ -147,7 +150,6 @@
     .menu__btn {
         display: inline-block;
         background-color: transparent;
-        
         width: 18rem;
         height: 100%;
         border: none;
@@ -173,7 +175,8 @@
 
         border-bottom:solid 2px #0a3871;
         box-shadow: -2rem 2rem 2rem rgba(0,0,0,0.2);
-        display: none;
+        /* display: none; */
+        visibility: hidden;
     }
 
     

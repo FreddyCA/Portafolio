@@ -67,7 +67,6 @@
 @media screen and (max-width: 768px) {
     .hobies {
         padding: 2rem;
-        margin-bottom: 2rem;
     }
 
     .hobies__contenedor {
@@ -76,13 +75,12 @@
 
     .hobies__titulo {
         font-size: 1.375rem;
-        margin: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .hobies__mayor {
         gap: 0.5rem;
         justify-content: space-between;
-        gap: 0.8rem;
     }
 
     .hobies__caja {
@@ -129,4 +127,31 @@
         box-sizing: border-box;
     }
 
+}
+
+@media screen and (max-width: 576px) {
+    .hobies {
+        padding: 2rem 0;
+    }
+    
+    .hobies__mayor {
+        background-color: #eaeaea;
+        gap: 0;
+    }
+    .hobies__titulo {
+        margin-bottom: 1.5rem;
+    }
+    .hobies__caja {
+        width: 48%;
+        margin-bottom: 1rem;
+    }
+
+
+    .hobies__caja {
+        flex-direction: column;
+    }
+    .hobies__img {
+        width: 50px;
+    }
+    
 }
