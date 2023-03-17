@@ -1,19 +1,49 @@
 const menuLista = document.querySelector(".muenu__lista");
-const menuAbrir = document.querySelector(".menu__abrir");
 const menuCerrar = document.querySelector(".menu__cerrar");
-const btnMenuAbrir = document.querySelector('.btn__img-abrir')
 const btnMenuCerrar = document.querySelector('.btn__img-cerrar')
 
+
+const btnMenuAbrir = document.querySelector('.btn__img-abrir')
+let ancho = true
+
+
+
+window.addEventListener('resize', () => {
+    dimension()
+    console.log(ancho)
+})
+
+const dimension = () => {
+    if (window.innerWidth > 1024) {
+        menuLista.style.visibility = 'visible';
+        return
+    } else {
+        if (ancho) {
+            menuLista.style.visibility = 'hidden';
+            menuCerrar.style.visibility = 'hidden';
+            btnMenuAbrir.style.visibility = 'visible';
+            return
+        } else {
+            menuLista.style.visibility = 'visible';
+            menuCerrar.style.visibility = 'visible';
+            btnMenuAbrir.style.visibility = 'hidden';
+        }
+        
+    }
+}
 
 
 
 btnMenuAbrir.addEventListener("click", () => {
-    abrirMenu()    
+    abrirMenu()
+    console.log(ancho)
 })
 const abrirMenu = () => {
     menuLista.style.visibility = 'visible';
     menuCerrar.style.visibility = 'visible';
-    menuAbrir.style.visibility = 'hidden';
+    btnMenuAbrir.style.visibility = 'hidden';
+    ancho = false;
+
 }
 
 btnMenuCerrar.addEventListener('click', () => {
@@ -22,16 +52,15 @@ btnMenuCerrar.addEventListener('click', () => {
 
 const cerrarMenu = () => {
     menuLista.style.visibility = 'hidden';
-    menuAbrir.style.visibility = 'visible';
+    btnMenuAbrir.style.visibility = 'visible';
     menuCerrar.style.visibility = 'hidden';
+    ancho = true;
 }
 
-// window.addEventListener('resize', function() {
-//     if (window.innerWidth > 1024) {
-//         let estilos = document.getElementById('cabecera__estilos')
-//         estilos.href = "estilos.css?" + new Date().getTime();
-//     }
-// })
+
+
+
+
 
 // PROBAR CON CAMBIO DE CLASES
 
