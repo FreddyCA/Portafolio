@@ -71,7 +71,6 @@ const clickMenuItem = (estado) => {
     menuFueraDesactivado();
   }
 };
-
 const menuClickFuera = (e) => {
   if (!menuLista.contains(e.target) && !menuCerrar.contains(e.target)) {
     cerrarMenu();
@@ -95,85 +94,163 @@ const animacionMenuDesativo = () => {
   });
 };
 
-// contacto
 
-// agarramos a todos los imputs y agreagmos el eventoblur
+const entradas = document.querySelectorAll(".form__input")
+const entradaMensaje = document.querySelector(".form__mensaje")
+const errorMensaje = document.querySelectorAll('.error__input');
 
-const inputs = document.querySelectorAll("input")
-
-inputs.forEach( input => {
-    input.addEventListener('blur', (input) => {
-        validaEntrada(input.target)
+entradas.forEach( (entradaFocus, index) => {
+    entradaFocus.addEventListener('blur', (input) => {
+        let indice = index
+        let texto = input.target.value
+        let entrada = entradaFocus
+        entradasElemento(indice, texto, entrada)
     })
 })
+const entradasElemento = (index, texto, entrada) =>{
+    if (index === 0) {
+        evaluarNombre(index, texto, entrada, nombreCampo = "NOMBRE")
+    } else if (index === 1) {
+        evaluarCorreo(index, texto, entrada, nombreCampo = "CORREO")
 
-
-const validaEntrada = (input) => {
-  const tipoDeInput = input.dataset.tipo;
-
-  if (validadores[tipoDeInput]) {
-    validadores[tipoDeInput](input);
-  }
-
-  console.log(input)
-
-  if (input.validity.valid) {
-    input.classList.remove("form__input--invalid")
-  } else {
-    input.classList.add("form__input--invalid")
-  }
-
-};
-
-
-const mensajesDeErro = {
-    nombre: {
-        valueMissing: "Este campo no puede estar vacío",
-        patternMismactch: "No son admitidos carácteres especiales",
-    },
-    correo: {
-        valueMissing: "Este campo no puede estar vacío",
-        typeMismatch: "El correo no es válido",
-    },
-    asunto: {
-        valueMissing: "Este campo no puede estar vacío",
-        patternMismactch: "No son admitidos carácteres especiales",
-    },
-    mensaje: {
-        valueMissing: "Este campo no puede estar vacío",
-        patternMismactch: "No son admitidos carácteres especiales",
+    } else if (index === 2) {
+        evaluarAsunto(index, texto, entrada, nombreCampo = "ASUNTO")
+    } else if (index === 3) {
+        evaluarMensaje(index, texto, entrada, nombreCampo = "MENSAJE")
+    }
+    
+}
+const evaluarNombre = (indice, nombre, alertaError, nombreCampo) => {
+  let maxCaracteres = 50;
+    if (nombre.trim () === "") {
+      entradaVacia(indice, nombre, alertaError, nombreCampo)
+      return
+    }
+      else if (nombre.length > maxCaracteres) {
+        maxLetras(indice, nombre, alertaError, maxCaracteres)
+        return
+    } else {
+        entradaCaracteresEspeciales(indice, nombre, alertaError)
+        return
     }
 }
-
-
-const validadores = {
-    nombre: input => validarNombre(input),
-    // correo: input => validarNombre(input),
-    asunto: input => validarNombre(input),
-    mensaje: input => validarNombre(input),    
-}
-
-
-
-
-
-const inputNombre = document.querySelector("#form__nombre");
-
-inputNombre.addEventListener("blur", (e) => {
-  // console.log(e.target)
-  validarNombre(e.target);
-});
-
-const validarNombre = (input) => {
-  const nombre = input.value;
-  let mensaje = "";
-  if (!cantidadCaracteres(nombre)) {
-    mensaje = "no cumple la condicion";
+const evaluarCorreo = (indice, correo, alertaError, nombreCampo) => {
+  let maxCaracteres = 50;
+  if (correo.trim() === "") {
+    entradaVacia(indice, correo, alertaError, nombreCampo)
+    return
+  }else if (correo.length > maxCaracteres) {
+    maxLetras(indice, correo, alertaError, maxCaracteres)
+    return
+  }else {
+    entradaCorreoValido(indice, correo, alertaError)
   }
-  console.log(mensaje);
-  input.setCustomValidity(mensaje);
-};
-
-const cantidadCaracteres = (nombre) => {
-  return nombre.length > 0 && nombre.length < 50;
-};
+}
+const evaluarAsunto = (indice, asunto, alertaError, nombreCampo) => {
+  let maxCaracteres = 100;
+  if (asunto.trim () === "") {
+    entradaVacia(indice, asunto, alertaError, nombreCampo)
+    return
+  }
+    else if (asunto.length > maxCaracteres) {
+      maxLetras(indice, asunto, alertaError, maxCaracteres)
+      return
+  } else {
+      entradaCaracteresEspeciales(indice, asunto, alertaError)
+      return
+  }
+}
+const evaluarMensaje = (indice, mensaje, alertaError, nombreCampo) =>{
+  let maxCaracteres = 1500;
+  if (mensaje.trim () === "") {
+    entradaVacia(indice, mensaje, alertaError, nombreCampo)
+    return
+  }
+    else if (mensaje.length > maxCaracteres) {
+      maxLetras(indice, mensaje, alertaError, maxCaracteres)
+      return
+  } else {
+      mensajeCaracteresEspeciales(indice,mensaje, alertaError)
+      return
+  }
+}
+const maxLetras = (indice, texto, alertaError, cant) => {
+  if (texto.length > cant) {
+    entradas[indice].style.backgroundColor = "#ff000014"
+        entradas[indice].classList.add("form__input--invalid")
+        errorMensaje[indice].textContent = `No se admite más de ${cant} caracteres`;
+        errorMensaje[indice].classList.add("error__input--invalid")
+        alertaError.setCustomValidity(`No se admite más de ${cant} caracteres`);
+  } else {
+    entradas[indice].style.backgroundColor = "white"
+        entradas[indice].classList.remove("form__input--invalid")
+        errorMensaje[indice].textContent = ""
+        errorMensaje[indice].classList.remove("error__input--invalid")
+        alertaError.setCustomValidity(``);
+  }
+}
+const entradaCorreoValido = (indice, correo, alertaError) => {
+  let regex = /^[0-9a-zA-Z]+([0-9a-zA-Z ]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/;
+  if (regex.test(correo)) {
+    entradas[indice].style.backgroundColor = "white"
+    entradas[indice].classList.remove("form__input--invalid")
+    errorMensaje[indice].textContent = ""
+    errorMensaje[indice].classList.remove("error__input--invalid")
+    alertaError.setCustomValidity('');
+  } else {
+    entradas[indice].style.backgroundColor = "#ff000014"
+    entradas[indice].classList.add("form__input--invalid")
+    errorMensaje[indice].textContent = "El correo no es válido"
+    errorMensaje[indice].classList.add("error__input--invalid")
+    alertaError.setCustomValidity(`El correo no es válido`);
+  }
+}
+const entradaCaracteresEspeciales = (indice, texto, alertaError) => {
+  let regex = /^[a-zA-Z0-9\s]+$/;
+  if (regex.test(texto)) {
+    entradas[indice].style.backgroundColor = "white"
+    entradas[indice].classList.remove("form__input--invalid")
+    errorMensaje[indice].textContent = ""
+    errorMensaje[indice].classList.remove("error__input--invalid")
+    alertaError.setCustomValidity('');
+  } else {
+    entradas[indice].style.backgroundColor = "#ff000014"
+    entradas[indice].classList.add("form__input--invalid")
+    errorMensaje[indice].textContent = "No se admite caracteres especiales"
+    errorMensaje[indice].classList.add("error__input--invalid")
+    alertaError.setCustomValidity(`No se admite caracteres especiales`);
+  }
+}
+const mensajeCaracteresEspeciales = (indice, texto, alertaError)  => {
+  let regexMen = /[<>{}()'"`´;&$+\/:=?@\[\]\\]/g;
+  if (regexMen.test(texto)) {
+    entradas[indice].style.backgroundColor = "#ff000014"
+    entradas[indice].classList.add("form__input--invalid")
+    errorMensaje[indice].textContent = "No se admite caracteres especiales"
+    errorMensaje[indice].classList.add("error__input--invalid")
+    alertaError.setCustomValidity(`No se admite caracteres especiales`);
+  } else {
+    entradas[indice].style.backgroundColor = "white"
+    entradas[indice].classList.remove("form__input--invalid")
+    errorMensaje[indice].textContent = ""
+    errorMensaje[indice].classList.remove("error__input--invalid")
+    alertaError.setCustomValidity('');
+  }
+}
+const entradaVacia = (indice, texto, alertaError, nombreCampo) =>  {
+    if (texto.trim() == "") {
+        entradas[indice].style.backgroundColor = "#ff000014"
+        entradas[indice].classList.add("form__input--invalid")
+        errorMensaje[indice].textContent = "No puede estar vacÍo"
+        errorMensaje[indice].classList.add("error__input--invalid")
+        alertaError.setCustomValidity(`No puede estar vacío el ${nombreCampo}`);
+        return
+    } else { 
+        entradas[indice].style.backgroundColor = "white"
+        entradas[indice].classList.remove("form__input--invalid")
+        errorMensaje[indice].textContent = ""
+        errorMensaje[indice].classList.remove("error__input--invalid")
+        alertaError.setCustomValidity('');
+        return
+    }
+}
