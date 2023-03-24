@@ -97,7 +97,6 @@ const animacionMenuDesativo = () => {
 const entradas = document.querySelectorAll(".form__input");
 const entradaMensaje = document.querySelector(".form__mensaje");
 const errorMensaje = document.querySelectorAll(".error__input");
-const estadoMensaje = Array(4).fill(false);
 const claseError = "error__input--invalid";
 const btnEnvio = document.querySelector("#botonEnvio")
 
@@ -201,14 +200,14 @@ const maxLetras = (indice, texto, alertaError, cant) => {
     errorMensaje[indice].textContent = `No se admite más de ${cant} caracteres`;
     errorMensaje[indice].classList.add("error__input--invalid");
     alertaError.setCustomValidity(`No se admite más de ${cant} caracteres`);
-    return (estadoMensaje[indice] = false);
+    return
   } else {
     entradas[indice].style.backgroundColor = "white";
     entradas[indice].classList.remove("form__input--invalid");
     errorMensaje[indice].textContent = "";
     errorMensaje[indice].classList.remove("error__input--invalid");
     alertaError.setCustomValidity(``);
-    return (estadoMensaje[indice] = true);
+    return
   }
 };
 const entradaCorreoValido = (indice, correo, alertaError) => {
@@ -220,14 +219,14 @@ const entradaCorreoValido = (indice, correo, alertaError) => {
     errorMensaje[indice].textContent = "";
     errorMensaje[indice].classList.remove("error__input--invalid");
     alertaError.setCustomValidity("");
-    return (estadoMensaje[indice] = true);
+    return
   } else {
     entradas[indice].style.backgroundColor = "#ff000014";
     entradas[indice].classList.add("form__input--invalid");
     errorMensaje[indice].textContent = "El correo no es válido";
     errorMensaje[indice].classList.add("error__input--invalid");
     alertaError.setCustomValidity(`El correo no es válido`);
-    return (estadoMensaje[indice] = false);
+    return
   }
 };
 const entradaCaracteresEspeciales = (indice, texto, alertaError) => {
@@ -238,32 +237,32 @@ const entradaCaracteresEspeciales = (indice, texto, alertaError) => {
     errorMensaje[indice].textContent = "";
     errorMensaje[indice].classList.remove("error__input--invalid");
     alertaError.setCustomValidity("");
-    return (estadoMensaje[indice] = true);
+    return
   } else {
     entradas[indice].style.backgroundColor = "#ff000014";
     entradas[indice].classList.add("form__input--invalid");
     errorMensaje[indice].textContent = "No se admite caracteres especiales";
     errorMensaje[indice].classList.add("error__input--invalid");
     alertaError.setCustomValidity(`No se admite caracteres especiales`);
-    return (estadoMensaje[indice] = false);
+    return
   }
 };
 const mensajeCaracteresEspeciales = (indice, texto, alertaError) => {
-  let regexMen = /[<>{}()'"`´;&$+\/:=?@\[\]\\]/g;
+  let regexMen = /[<>{}()'"`´;&$+\:=?\[\]\\]/g;
   if (regexMen.test(texto)) {
     entradas[indice].style.backgroundColor = "#ff000014";
     entradas[indice].classList.add("form__input--invalid");
     errorMensaje[indice].textContent = "No se admite caracteres especiales";
     errorMensaje[indice].classList.add("error__input--invalid");
     alertaError.setCustomValidity(`No se admite caracteres especiales`);
-    return (estadoMensaje[indice] = false);
+    return
   } else {
     entradas[indice].style.backgroundColor = "white";
     entradas[indice].classList.remove("form__input--invalid");
     errorMensaje[indice].textContent = "";
     errorMensaje[indice].classList.remove("error__input--invalid");
     alertaError.setCustomValidity("");
-    return (estadoMensaje[indice] = true);
+    return
   }
 };
 const entradaVacia = (indice, texto, alertaError, nombreCampo) => {
@@ -273,13 +272,13 @@ const entradaVacia = (indice, texto, alertaError, nombreCampo) => {
     errorMensaje[indice].textContent = "No puede estar vacÍo";
     errorMensaje[indice].classList.add("error__input--invalid");
     alertaError.setCustomValidity(`No puede estar vacío el ${nombreCampo}`);
-    return (estadoMensaje[indice] = false);
+    return
   } else {
     entradas[indice].style.backgroundColor = "white";
     entradas[indice].classList.remove("form__input--invalid");
     errorMensaje[indice].textContent = "";
     errorMensaje[indice].classList.remove("error__input--invalid");
     alertaError.setCustomValidity("");
-    return (estadoMensaje[indice] = true);
+    return
   }
 };
