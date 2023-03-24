@@ -83,7 +83,7 @@ button {
     }
 
     .show__menu-item {
-        animation: flipMenuNav 200ms 0ms ease forwards;
+        animation: flipMenuNav 250ms 0ms ease forwards;
     }
 
 

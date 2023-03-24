@@ -103,7 +103,7 @@
 .form__btn {
     display: block;
     margin-top: 2.5rem;
-    width: 180px;
+    width: 250px;
     height: 50px;
     background-color: #5b4b4bee;
     color: #9feedd;
@@ -114,12 +114,20 @@
     font-size: 1.05rem;
     transition: all 400ms ease;
 }
-.form__btn:hover {
-    background-color: #5b4b4bdf;
-    color: #9feedd;
-    box-shadow:0 0 0.2rem #5b4b4b;
-    translate: 0 2px;
+
+.form__btn--valid {
+    background-color: rgb(52, 82, 205);
+    color: white;
+    font-size: 1.15rem;
 }
+.form__btn--valid:hover {
+    background-color: rgba(193, 195, 204, 0);
+    color:  rgb(52, 82, 205);
+    box-shadow:0 0 0.2rem rgb(52, 82, 205);
+    font-size: 1.15rem;
+}
+
+
 
 
 @media screen and (max-width: 768px) {
@@ -139,14 +147,18 @@
 
     .contacto__form {
         width: 100%;
-        margin: 2rem;
+        margin: 2rem 0;
+        padding: 2rem;
+        box-sizing: border-box;
     }
 
     .contacto__titulo {
         font-size: 1.375rem;
         margin-bottom: 0.5rem;
+        
     }
     .contacto__descripcion {
+        width: 100%;
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
     }
@@ -155,10 +167,7 @@
     }
 
     .form__btn {
-        width: 200px;
-    }
-    .form__btn:hover {
-        translate: 0;
+        width: 220px;
     }
 }
 
@@ -166,7 +175,11 @@
     .contacto__descripcion {
         font-size: 1rem;
     }
+    .contacto__form {
+        margin: 2rem 0;
+        padding: 1rem;
+    }
     .form__btn {
         width: 100%;
-    }
+    } 
 }

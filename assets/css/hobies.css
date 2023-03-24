@@ -146,12 +146,14 @@
         margin-bottom: 1rem;
     }
 
-
+    .hobies__nombre {
+        font-size: 0.85rem;
+    }
     .hobies__caja {
         flex-direction: column;
     }
     .hobies__img {
-        width: 50px;
+        width: 100%;
     }
     
 }

@@ -40,6 +40,9 @@ footer {
   }
   .footer__nombre {
     font-size: 0.8rem;
+    text-align: center;
   }
-  
+  .footer__img {
+    margin: 0;
+  }
 }
