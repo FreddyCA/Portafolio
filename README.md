@@ -6,7 +6,7 @@ Primer desafío de Challenge Front End del **Programa ONE - Oracle Next Educatio
 
 ![mockup](https://user-images.githubusercontent.com/114038041/227668478-db940652-e6ba-4797-8b8c-9ff42d87c48a.png)
 
-Visita mi Portafolio [aquí](freddyca.github.io/portafolio/)
+Visita mi Portafolio [aquí](https://freddyca.github.io/Portafolio/)
 
 ---
 
