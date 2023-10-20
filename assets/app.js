@@ -112,10 +112,8 @@ entradas.forEach((entradaFocus, index) => {
       }
     }
     if(claseEncontrada) {
-      console.log("rojo")
       btnEnvio.classList.remove("form__btn--valid")
     } else {
-      console.log("sin anda")
       btnEnvio.classList.add("form__btn--valid")
     }
   });
